@@ -1,9 +1,80 @@
-@import 'tailwindcss';
+@import 'bootstrap/dist/css/bootstrap.min.css';
+@import 'bootstrap-icons/font/bootstrap-icons.css';
 
-@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
-@source '../../storage/framework/views/*.php';
+:root {
+    --bs-body-color: #292524;
+    --bs-body-bg: #fafaf9;
+    --bs-primary: #c2410c;
+    --bs-primary-rgb: 194, 65, 12;
+    --bs-link-color: #c2410c;
+    --bs-link-color-rgb: 194, 65, 12;
+    --bs-link-hover-color: #9a3412;
+    --bs-link-hover-color-rgb: 154, 52, 18;
+    --bs-border-color: #e7e5e4;
+    --bs-border-radius: .375rem;
+}
 
-@theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+body { min-width: 320px; }
+.min-width-0 { min-width: 0; }
+.d-grid { grid-template-columns: minmax(0, 1fr); }
+.brand { color: var(--bs-primary); font-size: 1.25rem; font-weight: 700; }
+.brand:hover { color: var(--bs-link-hover-color); }
+.auth-content { max-width: 27rem; margin-inline: auto; }
+.app-navigation { background: #fff; border-bottom: 2px solid var(--bs-primary); }
+.app-navigation .nav-link { color: #57534e; }
+.app-navigation .nav-link.active { color: #9a3412; background: #fff1e6; font-weight: 600; }
+.navbar-toggler, .btn, .form-control, .form-select { min-height: 40px; }
+.nav-account { min-width: 0; }
+.nav-account > span { max-width: 12rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.btn-primary {
+    --bs-btn-bg: var(--bs-primary);
+    --bs-btn-border-color: var(--bs-primary);
+    --bs-btn-hover-bg: #9a3412;
+    --bs-btn-hover-border-color: #9a3412;
+    --bs-btn-active-bg: #7c2d12;
+    --bs-btn-active-border-color: #7c2d12;
+    --bs-btn-disabled-bg: var(--bs-primary);
+    --bs-btn-disabled-border-color: var(--bs-primary);
+    --bs-btn-focus-shadow-rgb: var(--bs-primary-rgb);
+}
+.btn-outline-primary {
+    --bs-btn-color: var(--bs-primary);
+    --bs-btn-border-color: var(--bs-primary);
+    --bs-btn-hover-bg: var(--bs-primary);
+    --bs-btn-hover-border-color: var(--bs-primary);
+    --bs-btn-active-bg: #9a3412;
+    --bs-btn-active-border-color: #9a3412;
+    --bs-btn-focus-shadow-rgb: var(--bs-primary-rgb);
+}
+.form-control:focus, .form-select:focus, .form-check-input:focus { border-color: var(--bs-primary); box-shadow: 0 0 0 .2rem rgba(var(--bs-primary-rgb), .15); }
+.form-check-input:checked { background-color: var(--bs-primary); border-color: var(--bs-primary); }
+.form-check-label { padding-block: .25rem; }
+.form-check-input { margin-top: .5rem; }
+.account-details dt { color: #78716c; font-size: .875rem; font-weight: 500; margin-bottom: .25rem; }
+.account-details dd { margin: 0; overflow-wrap: anywhere; }
+.profile-fields .form-label { margin-bottom: .25rem; }
+.role-badge { background: #fff1e6; color: #9a3412; font-weight: 500; }
+.account-table { min-width: 36rem; font-size: .875rem; }
+.account-table th { font-weight: 600; }
+.file-table { min-width: 44rem; }
+.file-name { display: block; min-width: 8rem; max-width: 20rem; overflow-wrap: anywhere; }
+.file-icon { display: inline-flex; justify-content: center; flex: 0 0 1.5rem; color: var(--bs-primary); font-size: 1.4rem; }
+.storage-progress { height: .5rem; appearance: none; border: 0; border-radius: .375rem; overflow: hidden; background: #e7e5e4; color: var(--bs-primary); accent-color: var(--bs-primary); }
+.storage-progress::-webkit-progress-bar { background: #e7e5e4; }
+.storage-progress::-webkit-progress-value { background: var(--bs-primary); }
+.storage-progress::-moz-progress-bar { background: var(--bs-primary); }
+.pagination { --bs-pagination-active-bg: var(--bs-primary); --bs-pagination-active-border-color: var(--bs-primary); --bs-pagination-focus-box-shadow: 0 0 0 .2rem rgba(var(--bs-primary-rgb), .15); }
+.skip-link { position: absolute; z-index: 1100; padding: .75rem 1rem; background: #fff; }
+:focus-visible, .validation-summary:focus { outline: 2px solid var(--bs-primary); outline-offset: 3px; }
+.no-js .navbar-collapse { display: block; }
+.no-js .navbar-toggler { display: none; }
+
+@media (min-width: 576px) {
+    .profile-fields > div { display: grid; grid-template-columns: 8rem minmax(0, 1fr); align-items: center; column-gap: .75rem; }
+    .profile-fields .form-label { margin-bottom: 0; }
+    .profile-fields .invalid-feedback, .profile-fields .form-text { grid-column: 2; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
 }

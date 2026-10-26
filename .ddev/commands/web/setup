@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+## Description: Install dependencies, configure the local app, migrate, and build assets
+## Usage: setup
+## Example: ddev setup
+
+set -euo pipefail
+
+cd /var/www/html
+
+composer install --no-interaction --prefer-dist
+
+if [ ! -f .env ]; then
+    cp .env.example .env
+fi
+
+php artisan config:clear --no-interaction
+
+if php -r 'require "vendor/autoload.php"; $environment = Dotenv\Dotenv::parse(file_get_contents(".env")); exit(empty($environment["APP_KEY"]) ? 0 : 1);'; then
+    php artisan key:generate --no-interaction
+fi
+
+php artisan migrate --no-interaction
+php artisan db:seed --no-interaction
+npm ci --ignore-scripts
+npm run build

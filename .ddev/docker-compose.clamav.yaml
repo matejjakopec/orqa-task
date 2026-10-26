@@ -1,0 +1,24 @@
+services:
+  clamav:
+    container_name: ddev-${DDEV_SITENAME}-clamav
+    image: clamav/clamav:1.4.6_base
+    restart: unless-stopped
+    cpus: 2.0
+    mem_limit: 4g
+    labels:
+      com.ddev.site-name: ${DDEV_SITENAME}
+      com.ddev.approot: ${DDEV_APPROOT}
+    volumes:
+      - clamav-signatures:/var/lib/clamav
+      - ./clamav/clamd.conf:/etc/clamav/clamd.conf:ro
+    environment:
+      FRESHCLAM_CHECKS: '12'
+    healthcheck:
+      test: [CMD-SHELL, 'clamdscan --ping=1 --config-file=/etc/clamav/clamd.conf || exit 1']
+      start_period: 300s
+      interval: 10s
+      timeout: 5s
+      retries: 30
+
+volumes:
+  clamav-signatures:

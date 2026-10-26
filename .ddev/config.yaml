@@ -14,6 +14,18 @@ composer_version: "2"
 web_environment: []
 nodejs_version: "24"
 corepack_enable: false
+default_container_timeout: 600
+web_extra_daemons:
+    - name: queue
+      command: >-
+          bash -c 'until test -f vendor/autoload.php && test -f .env; do sleep 2; done;
+          exec php artisan queue:listen --sleep=3 --tries=3 --timeout=450 --no-interaction'
+      directory: /var/www/html
+    - name: scheduler
+      command: >-
+          bash -c 'until test -f vendor/autoload.php && test -f .env; do sleep 2; done;
+          exec php artisan schedule:work --no-interaction'
+      directory: /var/www/html
 
 # Key features of DDEV's config.yaml:
 
