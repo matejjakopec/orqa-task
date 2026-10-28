@@ -1,0 +1,38 @@
+<?php
+
+declare(strict_types=1);
+
+return [
+    'brand' => 'Orqa',
+    'skip' => 'Skip to main content',
+    'navigation' => 'Main navigation',
+    'toggle_navigation' => 'Toggle navigation',
+    'back_to_application' => 'Back to the application',
+    'logout' => 'Sign out',
+    'login' => 'Sign in',
+    'username' => 'Username',
+    'password' => 'Password',
+    'remember' => 'Keep me signed in',
+    'forgot_password' => 'Forgot your password?',
+    'reset_request' => 'Set up or reset your password',
+    'email' => 'Email address',
+    'send_reset' => 'Send password link',
+    'back_to_login' => 'Back to sign in',
+    'reset_password' => 'Choose a new password',
+    'new_password' => 'New password',
+    'password_hint' => 'At least 12 characters.',
+    'password_confirmation' => 'Confirm new password',
+    'save_password' => 'Save password',
+    'cancel' => 'Cancel',
+    'validation_heading' => 'Please check the highlighted fields.',
+    'saving' => 'Please wait…',
+    'account_details' => 'Account details',
+    'organisation' => 'Organisation',
+    'global_account' => 'Global administration',
+    'roles' => 'Account roles',
+    'role_user' => 'User',
+    'role_admin' => 'Administrator',
+    'role_superadmin' => 'Superadministrator',
+    'too_many_attempts' => 'Take a short break',
+    'too_many_description' => 'There have been too many attempts. Please wait a minute before trying again.',
+];
