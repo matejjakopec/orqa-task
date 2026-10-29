@@ -22,6 +22,18 @@ ddev launch
 
 DDEV starts MariaDB, the queue worker, scheduler, Mailpit, and ClamAV automatically.
 
+## Local HTTPS
+
+Trust DDEV's local certificate authority so the browser accepts the project's HTTPS certificate. Run on your host machine:
+
+```bash
+mkcert -install
+```
+
+Restart your browser. If a certificate warning remains, run `mkcert -CAROOT`, then import `rootCA.pem` from that directory in your browser's **Settings → Certificates → Authorities → Import** and enable trust for websites.
+
+For WSL2, install trust on Windows with `mkcert.exe -install` in PowerShell. See [DDEV's browser setup](https://docs.ddev.com/en/stable/users/install/configuring-browsers/) for browser-specific instructions.
+
 ## Accounts
 
 Demo accounts have random usernames and profile data. All generated accounts use password **`local-demo-password`**. Use `users:list` to see usernames and types.
